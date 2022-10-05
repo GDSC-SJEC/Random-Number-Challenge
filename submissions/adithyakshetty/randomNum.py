@@ -24,6 +24,10 @@ while counter < 3:
     counter += 1
     if counter != 3:
         print("Your left with ",lives_counter)
+        if user_guessed_number > comp_guessed_number:
+            print("U guessed little high")
+        elif user_guessed_number < comp_guessed_number:
+            print("U guessed little low")
 
 if not guessed:
     print("Sadge, Better luck next time 👍")
