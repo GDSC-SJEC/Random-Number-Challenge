@@ -65,11 +65,11 @@ int main(){
 }
 
 short easy(){
-    short secret = rand() % 250 + 1;
-    short score = 2000, guess, difference;
+    short secret = rand() % 100 + 1;
+    short score = 1000, guess, difference;
     char temp[20];
     printf("======EASY=MODE=====\n");
-    printf("Hint: Guess a number between 1 and 250 (inclusive).\n");
+    printf("Hint: Guess a number between 1 and 100 (inclusive).\n");
     printf("Hint: Press 'q' to quit.\n");
     while(score){
         printf("Guess: ");
@@ -90,24 +90,21 @@ short easy(){
             difference = abs(secret - guess);
 
             // Affect score negatively
-            score -= 3.14 * difference;
-            if (score > 0)
-                printf("Score: %i\n", score);
+            score -= 6.28 * difference;
+            if (score > 0){
+                // Hint messages
+                if (difference <= 10)
+                    printf(">>> Score %i\n>>> Super Hot!\n", score);
+                else if (difference <= 25)
+                    printf(">>> Score %i\n>>> Mildly Hot!\n", score);
+                else if (difference <= 50)
+                    printf(">>> Score %i\n>>> Moderately Cold!\n", score);
+                else
+                    printf(">>> Score %i\n>>> Super Cold!\n", score);
+            }
             else{
                 return -1;
             }
-
-            // Hint messages
-            if (difference <= 10)
-                printf(">>> Super Hot! <<<\n");
-            else if (difference <= 25)
-                printf(">>> Mildly Hot! <<<\n");
-            else if (difference <= 75)
-                printf(">>> Moderately Cold! <<<\n");
-            else if (difference <= 125)
-                printf(">>> Super Cold! <<<\n");
-            else
-                printf(">>> Freezing Cold! <<<\n");
         }
     }
     return score;
