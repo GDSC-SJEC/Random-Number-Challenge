@@ -5,8 +5,8 @@
 #include <time.h>
 
 short easy();
-void medium();
-void hard();
+short medium();
+short hard();
 
 int main(){
     
@@ -26,37 +26,53 @@ int main(){
     scanf("%[^\n]%*c", name);
 
     // Setting Difficulty
+    int score;
+    char difficulty;
     printf("Choose difficulty: Easy | Medium | Hard\n");
     while(1){
         printf("(E/M/H): ");
-        char difficulty;
         scanf("\n%c", &difficulty);
         difficulty = toupper(difficulty);
         if (difficulty == 'E'){
-            easy();
+            score = easy();
             break;
         }
         if (difficulty == 'M'){
-            medium();
+            score = medium();
             break;
         }
         if (difficulty == 'H'){
-            hard();
+            score = hard();
             break;
         }
     }
 
+    // Printing results
+    if (score > 0){
+        printf("##########\nGreat job %s!\n", name);
+        printf("Your score is: %i\n#########\n", score);
+        if (scores_opened){
+            fprintf(scores, "\"%s\",\"%c\",%i\n", name, difficulty, score);
+        }
+    }
+    else{
+        printf("Try again!\n");
+    }
+
+    // Closing this
     fclose(scores);
     return 0;
 }
 
 short easy(){
     short secret = rand() % 250 + 1;
-    short score = 1000, guess;
-    char temp[20]; 
+    short score = 2000, guess, difference;
+    char temp[20];
+    printf("======EASY=MODE=====\n");
     printf("Hint: Guess a number between 1 and 250 (inclusive).\n");
     printf("Hint: Press 'q' to quit.\n");
     while(score){
+        printf("Guess: ");
         scanf("%s", temp);
         if (temp[0] == 'q')
             exit(0);
@@ -65,15 +81,44 @@ short easy(){
             continue;
         }
         guess = atoi(temp);
+
         // Checking and reducing score
+        if (guess == secret){
+            return score;
+        }
+        else{
+            difference = abs(secret - guess);
+
+            // Affect score negatively
+            score -= 3.14 * difference;
+            if (score > 0)
+                printf("Score: %i\n", score);
+            else{
+                return -1;
+            }
+
+            // Hint messages
+            if (difference <= 10)
+                printf(">>> Super Hot! <<<\n");
+            else if (difference <= 25)
+                printf(">>> Mildly Hot! <<<\n");
+            else if (difference <= 75)
+                printf(">>> Moderately Cold! <<<\n");
+            else if (difference <= 125)
+                printf(">>> Super Cold! <<<\n");
+            else
+                printf(">>> Freezing Cold! <<<\n");
+        }
     }
     return score;
 }
 
-void medium(){
-    return;
+short medium(){
+    printf("Under construction\n");
+    exit(0);
 }
 
-void hard(){
-    return;
+short hard(){
+    printf("Under construction\n");
+    exit(0);
 }

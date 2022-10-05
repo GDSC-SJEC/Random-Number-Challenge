@@ -1,0 +1,8 @@
+Easy Scores
+If the difference is less than:
+10, then say: Super Hot!
+25, then say: Mildly Hot!
+75, then say: Moderately Cold!
+125, then say: Super Cold!
+else, Freezing Cold!
+
