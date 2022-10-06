@@ -74,8 +74,9 @@ short easy(){
     while(score){
         printf("Guess: ");
         scanf("%s", temp);
-        if (temp[0] == 'q')
+        if (tolower(temp[0]) == 'q'){
             exit(0);
+        }
         if (!atoi(temp)){
             printf("Not a number!\n");
             continue;
@@ -120,7 +121,7 @@ short hard(){
     short range_offset = rand() % 10000 + 1;
     short range = rand() % 1234 + 1024;
     short secret = (rand() % range + 1) + range_offset;
-    short score = 10000, guess, difference;
+    short score = 10000, guess, difference, counter = 0;
     float deviation;
     char temp[20];
     printf("======HARD=MODE=====\n");
@@ -128,11 +129,19 @@ short hard(){
     printf("Hint: Press 'q' to quit.\n");
     printf("Hint: Press 'r' to see the range again.\n");
     while(score){
+        if (counter = 10){
+            printf("Hint: Try guessing the number using the binary search technique!\n");
+            printf("Hint: It is between %i and %i (inclusive).\n", range_offset + 1, range_offset + range);
+        }
+        if (counter = 25){
+            printf("Hint: Your guess is \"Super Hot!\" when you are within 2%% of the answer\n");
+        }
         printf("Guess: ");
         scanf("%s", temp);
-        if (temp[0] == 'q')
+        if (tolower(temp[0] == 'q')){
             exit(0);
-        if (temp[0] == 'r'){
+        }
+        if (tolower(temp[0]) == 'r'){
             printf("The number is between %i and %i (inclusive).\n", range_offset + 1, range_offset + range);
             continue;
         }
@@ -146,6 +155,7 @@ short hard(){
             continue;
         }
         // Checking and reducing score
+        counter++;
         if (guess == secret){
             return score;
         }
