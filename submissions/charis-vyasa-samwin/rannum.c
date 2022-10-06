@@ -126,11 +126,16 @@ short hard(){
     printf("======HARD=MODE=====\n");
     printf("Hint: Guess the number between %i and %i (inclusive).\n", range_offset + 1, range_offset + range);
     printf("Hint: Press 'q' to quit.\n");
+    printf("Hint: Press 'r' to see the range again.\n");
     while(score){
         printf("Guess: ");
         scanf("%s", temp);
         if (temp[0] == 'q')
             exit(0);
+        if (temp[0] == 'r'){
+            printf("The number is between %i and %i (inclusive).\n", range_offset + 1, range_offset + range);
+            continue;
+        }
         if (!atoi(temp)){
             printf("Not a number!\n");
             continue;
