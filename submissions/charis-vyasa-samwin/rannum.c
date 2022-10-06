@@ -49,8 +49,20 @@ int main(){
 
     // Printing results
     if (score > 0){
+
+        // Got it on the first try!
+        if ( (score == 1000 && difficulty == 'E') || (score == 10000 && difficulty == 'H')){
+            printf("\n##########\nYou got it on the first try! %s!\n", name);
+            printf("Your score is %i\n#########\n\n", score);
+            goto printscore;
+        }
+
+        // Default results
         printf("\n##########\nGreat job %s!\n", name);
-        printf("Your score is: %i\n#########\n\n", score);
+        printf("Your score is %i\n#########\n\n", score);
+        
+        // Update scores.csv
+        printscore:
         if (scores_opened){
             fprintf(scores, "\"%s\",\"%c\",%i\n", name, difficulty, score);
         }
@@ -113,6 +125,7 @@ short easy(){
 }
 
 short medium(){
+    // Starting score can be 2000 to guess between 1 and 250 (inclusive).
     printf("Under construction\n");
     exit(0);
 }
