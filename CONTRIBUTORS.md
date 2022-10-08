@@ -6,3 +6,4 @@
 - [Vyasa M Nayak](https://github.com/SeptiCalls)
 - [Samwin Pereira](https://github.com/samwinp)
 - [Pragnya Nagure](https://github.com/xxpsynagure)
+- [Yashas Ip](https://github.com/yashasip)
