@@ -7,3 +7,4 @@
 - [Samwin Pereira](https://github.com/samwinp)
 - [Pragnya Nagure](https://github.com/xxpsynagure)
 - [Yashas Ip](https://github.com/yashasip)
+- [Romil Jain](https://github.com/romiljain23)
