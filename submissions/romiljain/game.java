@@ -47,6 +47,4 @@ public class game {
 
 	}
 
-}public class game {
-    
 }
