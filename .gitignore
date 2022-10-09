@@ -199,4 +199,5 @@ $RECYCLE.BIN/
 
 # SeptiCalls testing binaries and reference files
 /submissions/charis-vyasa/rannum
-/submissions/charis-vyasa/HardScores.txt
+/submissions/charis-vyasa/*.txt
+/submissions/charis-vyasa/*.exe
