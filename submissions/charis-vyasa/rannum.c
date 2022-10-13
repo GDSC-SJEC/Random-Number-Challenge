@@ -32,8 +32,10 @@ int main(){
     while(1){
         printf("(E/M/H): ");
         scanf("\n%c", &difficulty);
+        fflush(stdin);
         difficulty = toupper(difficulty);
         if (difficulty == 'E'){
+            // To clear stdin
             score = easy();
             break;
         }
@@ -67,9 +69,8 @@ int main(){
             fprintf(scores, "\"%s\",\"%c\",%i\n", name, difficulty, score);
         }
     }
-    else{
-        printf("Try again!\n");
-    }
+    else
+        printf("Try again! %s\n", name);
 
     // Closing this
     fclose(scores);
@@ -80,12 +81,15 @@ short easy(){
     short secret = rand() % 100 + 1;
     short score = 1000, guess, difference;
     char temp[20];
-    printf("======EASY=MODE=====\n");
+    printf("=====EASY=MODE=====\n");
     printf("Hint: Guess the number between 1 and 100 (inclusive).\n");
     printf("Hint: Press 'q' to quit.\n");
     while(score){
         printf("Guess: ");
         scanf("%s", temp);
+        fflush(stdin);
+  
+        // Evaluating guesses
         if (tolower(temp[0]) == 'q'){
             exit(0);
         }
@@ -98,13 +102,14 @@ short easy(){
             printf("Not in range!\n");
             continue;
         }
-        // Checking and reducing score
-        if (guess == secret){
+        // Checking
+        if (guess == secret)
             return score;
-        }
+        
+        // Reducing score
         else{
             difference = abs(secret - guess);
-            // Affect score negatively
+            // Affect score negatively  
             score -= 6.28 * difference;
             if (score > 0){
                 // Hint messages
@@ -124,7 +129,8 @@ short easy(){
     }
 }
 
-/*short medium(){
+/* Charis' initial generator
+short medium(){
     short score = 1000, i, guess, difference;
     int secret;
     char temp[20];
@@ -149,50 +155,55 @@ short easy(){
         exit(0);
     }
     i = atoi(temp);
-    secret = prime[i];*/
+    secret = prime[i];
+*/
 
 short primegen() {
-    short secret;
-    short counter;
+    short secret, counter;
     do {
     secret = rand() % 1000 + 1;
     counter = 0;
-    for(int i = 1; i <= secret; i++ )
+    for(int i = 2; i <= secret; i++ )
         if(!(secret % i)) counter++;        
     }
-    while(counter != 2);
+    while(counter != 1);
     return secret;
 }
-    
-
-
 
 short medium(){
     short secret = primegen();
-    short score = 1500, guess, difference, counts;
+    short score = 1500, guess, difference, counter;
     char temp[20];
-    printf("======MEDIUM=MODE=====\n");
+    printf("=====MEDIUM=MODE=====\n");
     printf("Hint: Guess the number between 1 and 1000 (inclusive).\n");
     printf("Hint: Press 'q' to quit.\n");
     while(score){
-        counts++;
+        // Counter to keep track of guesses
+        counter++;
+
+        // Reading the guesses
         printf("Guess: ");
         scanf("%s", temp);
-        if (temp[0] == 'q')
+        fflush(stdin);
+
+        // Evaluating guesses
+        if (tolower(temp[0]) == 'q')
             exit(0);
         if (!atoi(temp)){
             printf("Not a number!\n");
             continue;
         }
         guess = atoi(temp);
-        //hint
-        if (counts == 10) 
-            printf("Hint: Number is prime");
+        
+        // Hint after 10 tries
+        if (counter == 10) 
+            printf("Hint: The number is prime\n");
             
-        // Checking and reducing score
-        if (guess == secret){
+        // Checking
+        if (guess == secret)
             return score;
-        }
+
+        // Reducing the score   
         else {
             difference = abs(secret - guess);
 
@@ -224,11 +235,12 @@ short hard(){
     short score = 10000, guess, difference, counter = 0;
     float deviation;
     char temp[20];
-    printf("======HARD=MODE=====\n");
+    printf("=====HARD=MODE=====\n");
     printf("Hint: Guess the number between %i and %i (inclusive).\n", range_offset + 1, range_offset + range);
     printf("Hint: Press 'q' to quit.\n");
     printf("Hint: Press 'r' to see the range again.\n");
     while(score){
+        // Special hints for guesses
         if (counter == 10){
             printf("Hint: Try guessing the number using the binary search technique!\n");
             printf("Hint: It is between %i and %i (inclusive).\n", range_offset + 1, range_offset + range);
@@ -236,9 +248,14 @@ short hard(){
         if (counter == 25){
             printf("Hint: Your guess is \"Super Hot!\" when you are within 2%% of the answer\n");
         }
+
+        // Gettting the guesses
         printf("Guess: ");
         scanf("%s", temp);
-        if (tolower(temp[0] == 'q')){
+        fflush(stdin);
+
+        // Evaluating the guesses
+        if (tolower(temp[0]) == 'q'){
             exit(0);
         }
         if (tolower(temp[0]) == 'r'){
@@ -254,13 +271,16 @@ short hard(){
             printf("Not in range!\n");
             continue;
         }
-        // Checking and reducing score
+
+        // Checking score
         counter++;
-        if (guess == secret){
+        if (guess == secret)
             return score;
-        }
+        
+        // Reducing score
         else{
             difference = abs(secret - guess);
+            // Range is random hence we measure deviation in values  
             deviation = (float) guess / secret;
             // Affect score negatively
             score -= deviation * difference;
