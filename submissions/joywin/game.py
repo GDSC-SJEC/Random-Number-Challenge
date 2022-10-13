@@ -18,7 +18,7 @@ def easy():
         if guess== "Q" or guess== "q":
             exit()
         guess = int(guess)
-        if guess<1 or guess>=10:
+        if guess<1 or guess>10:
             print("Out of range")
         elif(guess==rannum):
             return score
@@ -54,7 +54,7 @@ def medium():
         if guess== "Q" or guess== "q":
             exit()
         guess = int(guess)
-        if guess<1 or guess>=100:
+        if guess<1 or guess>100:
             print("Out of range")
         elif(guess==rannum):
             return score
@@ -90,7 +90,7 @@ def hard():
         if guess== "Q" or guess== "q":
             exit()
         guess = int(guess)
-        if guess<1 or guess>=1000:
+        if guess<1 or guess>1000:
             print("Out of range")
         elif(guess==rannum):
             return score
