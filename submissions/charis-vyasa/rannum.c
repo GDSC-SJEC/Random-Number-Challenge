@@ -173,7 +173,7 @@ short primegen() {
 
 short medium(){
     short secret = primegen();
-    short score = 1500, guess, difference, counter;
+    short score = 5000, guess, difference, counter;
     char temp[20];
     printf("=====MEDIUM=MODE=====\n");
     printf("Hint: Guess the number between 1 and 1000 (inclusive).\n");
