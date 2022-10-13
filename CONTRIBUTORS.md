@@ -9,7 +9,5 @@
 - [Yashas Ip](https://github.com/yashasip)
 - [Romil Jain](https://github.com/romiljain23)
 - [Justin M](https://github.com/jmmille)
-- [samwin pereria](https://github.com/samwinp)
-
 
 
