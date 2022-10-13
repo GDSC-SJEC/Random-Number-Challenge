@@ -32,10 +32,11 @@ int main(){
     while(1){
         printf("(E/M/H): ");
         scanf("\n%c", &difficulty);
+        // To clear stdin
         fflush(stdin);
         difficulty = toupper(difficulty);
         if (difficulty == 'E'){
-            // To clear stdin
+  
             score = easy();
             break;
         }
