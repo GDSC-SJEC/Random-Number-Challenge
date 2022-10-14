@@ -9,7 +9,5 @@
 - [Yashas Ip](https://github.com/yashasip)
 - [Romil Jain](https://github.com/romiljain23)
 - [Justin M](https://github.com/jmmille)
-- [samwin pereria](https://github.com/samwinp)
-- [joywin bennis](https://github.com/joywin2003)
-
-
+- [Oren Saldanha](https://github.com/orensaldanha)
+- [Joywin Bennis](https://github.com/joywin2003)
